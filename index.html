@@ -1,1 +1,84 @@
-
+<!DOCTYPE html>
+<html>
+<head>
+  <title>showGo</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css">
+  <link rel="stylesheet" href="index.css">
+  <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+</head>
+<body>
+  <div class="container">
+    <h1 class="title is-1 has-text-centered has-text-primary">showGo</h1>
+    <p class="subtitle has-text-centered">Search for your favorite artists, discover local shows & learn about new favorites.</p>
+    <div class="field is-grouped">
+      <input class="input" type="text" placeholder="Search">
+      <input class="button is-primary is-outlined" type="submit" value="Search">
+    </div>
+    <div id="results-container" class="tile is-ancestor is-vertical is-parent">
+      <div class="tile is-primary notification is-child box">
+        <p class="title is-4">Daft Punk</p>
+      </div>
+      <div class="message is-primary">
+        <div class="message-header">
+          <h2 class="title is-4">Daft Punk</h2>
+        </div>
+        <div class="message-body">
+          <div class="columns">
+            <div class="column">
+                <h3 class="title is-5">Artist Bio</h3>
+                <p>Daft Punk are a French electronic music duo formed in Paris in 1993 by Guy-Manuel de Homem-Christo
+                  and Thomas Bangalter. They achieved popularity in the late 1990s as part of the French house movement,
+                  and had success in the years following, combining elements of house music with funk, techno, disco, rock
+                  and synthpop. They have worn ornate helmets and gloves to assume robot personas in most public appearances
+                  since 2001, and rarely grant interviews or appear on television. The duo were managed from 1996 to 2008 by
+                  Pedro Winter (also known as Busy P), the head of Ed Banger Records. <a href="">(read more)</a></p>
+            </div>
+            <div class="column">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/FGBhQbmPwH8" frameborder="0"
+                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+          </div>
+          <h3 class="title is-5">Upcoming Shows</h3>
+          <p class="has-text-danger has-text-weight-bold">No upcoming events</p>
+        </div>
+      </div>
+      <div class="tile is-primary notification is-child box">
+        <h2 class="title is-4">Ariana Grande</h2>
+        <div class="columns">
+          <div class="column">
+              <h3 class="title is-5">Artist Bio</h3>
+              <p>Ariana Grande-Butera (; born June 26, 1993) is an American singer, songwriter and actress. She began
+                her career in 2008 in the Broadway musical 13, before playing the role of Cat Valentine in the Nickelodeon
+                television series Victorious (2010–2013) and in the spinoff Sam & Cat (2013–2014). She has also appeared in
+                other theatre and television roles and has lent her voice to animated television and films. <a href="">(read more)</a></p>
+          </div>
+          <div class="column">
+              <iframe width="560" height="315" src="https://www.youtube.com/embed/ffxKSjUwKdU" frameborder="0"
+              allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </div>
+        </div>
+        <h3 class="title is-5">Upcoming Shows</h3>
+        <div class="tile is-ancestor">
+          <div class="tile is-parent">
+            <div class="tile is-child box button is-link is-inverted is-outlined">
+              <p>May 19<br />Toyota Center<br />Houston, TX</p>
+            </div>
+          </div>
+          <div class="tile is-parent">
+            <div class="tile is-child box button is-link">
+              <p>May 17<br />AT&T Center<br />San Antonio, TX</p>
+            </div>
+          </div>
+          <div class="tile is-parent">
+            <div class="tile is-child box button is-link is-inverted">
+              <p>May 21<br />American Airlines Center<br />Dallas, TX</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
