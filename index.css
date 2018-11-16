@@ -1,3 +1,25 @@
 body {
-  padding-top: 50px;
+  padding-top: 100px;
+  background-color: hsl(0, 0%, 96%);
+}
+
+#site-header {
+  padding-bottom: 50px;
+}
+
+#site-title h1, #site-title p {
+
+}
+
+#site-title {
+  background-image: url("concert-crowd.png");
+  height: 400px;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  padding-bottom: 20px;
 }
