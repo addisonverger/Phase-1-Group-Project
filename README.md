@@ -1,2 +1,11 @@
 # ShowGo :notes:
-## Find out if/when your favorite artists is coming to town and when similar artists playing :metal:
+## Where you can find out when your favorite artist is coming to town and when similar artists are playing  :guitar: metal:
+
+### Hosting
+### JavaScript libraries
+#### Scroll Magic
+### CSS Framework
+#### Bulma
+### APIs
+#### TasteDiveAPI & Bandsintown
+### Travis CI
