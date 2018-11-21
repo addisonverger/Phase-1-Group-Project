@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', init)
         triggerElement: '.container #loader',
         triggerHook: "onEnter"
     })
-    .addIndicators()
+    // .addIndicators()
     .addTo(controller)
     .on("enter", function (event) {
         if (!$("#loader").hasClass("active")) {
