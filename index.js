@@ -23,3 +23,46 @@ function init () {
 }
 
 document.addEventListener('DOMContentLoaded', init)
+
+// Init ScrollMagic Controller
+    var controller = new ScrollMagic.Controller();
+// Define ScrollMagic Scene
+    var containerScene = new ScrollMagic.Scene({
+        triggerElement: '.container #loader',
+        triggerHook: "onEnter"
+    })
+    // .addIndicators()
+    .addTo(controller)
+    .on("enter", function (event) {
+        if (!$("#loader").hasClass("active")) {
+            $("#loader").addClass("active");
+            if (console){
+                console.log("loading new items");
+            }
+            setTimeout(addResults, 1000, 9);
+        }
+    })
+
+// Function to add in new search results
+function addResults (amount) {
+// TO DO: Need to update this for loop so that it adds a result from the search, not hard coded div
+    for (i=1; i<=amount; i++) {
+        $("<div>This is where a new result will go</div>")
+            .addClass("tile is-dark notification is-child box")
+            .css({
+                "width": "100%",
+                "background-color": "#4a4a4a",
+                "font-size": "1rem",
+                "font-weight": "400",
+                "line-height": "1.5",
+                "font-family": "BlinkMacSystemFont,-apple-system,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,Helvetica,Arial,sans-serif",
+            })
+            .appendTo(".container #results-container");
+    }
+    // "loading" done -> revert to normal state
+    containerScene.update(); // make sure the scene gets the new start position
+    $("#loader").removeClass("active");
+    }
+
+// Set the initial number of results to appear on the page
+addResults(5)
