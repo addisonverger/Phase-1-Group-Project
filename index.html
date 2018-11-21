@@ -7,20 +7,27 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css">
   <link rel="stylesheet" href="index.css">
   <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+  <script src="jquery-3.3.1.min.js"></script>
+  <script src="index.js"></script>
 </head>
 <body>
   <div class="container">
+    <!-- Title,intro, and search bar -->
     <div id="site-header">
+      <!-- Title and intro -->
       <div id="site-title">
         <h1 class="title is-1 has-text-centered has-text-info">showGo</h1>
         <p class="subtitle has-text-centered has-text-light">Search for your favorite artists, discover local shows & learn about new favorites.</p>
       </div>
+      <!-- Search bar -->
       <div class="field is-grouped">
         <input class="input" type="text" placeholder="Search">
         <input class="button is-info is-outlined" type="submit" value="Search">
       </div>
     </div>
+    <!-- Results -->
     <div id="results-container" class="tile is-ancestor is-vertical is-parent">
+      <!-- result card -->
       <div class="tile is-dark notification is-child box">
         <p class="title is-4">Daft Punk</p>
       </div>
@@ -79,6 +86,7 @@
         </div>
       </div>
     </div>
+    <div id="test-container">TestingBandsintownAPI</div>
   </div>
 </body>
 </html>
