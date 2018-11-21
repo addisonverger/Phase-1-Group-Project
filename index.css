@@ -1,7 +1,7 @@
-/* body {
+body {
   padding-top: 100px;
-  background-color: hsl(0, 0%, 96%); */
-  /* height: 100%;
+  background-color: hsl(0, 0%, 96%); 
+  height: 100%;
 }
 
 #site-header {
@@ -23,28 +23,7 @@
   justify-content: flex-end;
   align-items: center;
   padding-bottom: 20px;
-} */
-
-#container {
-  margin: 55vh 0;
-  padding: 50px;
-  outline: 1px dashed orange;
-}
-
-#block {
-  padding: 10px;
-  border: 1px solid black;
-  font-family: Helvetica;
-}
-
-.dynamicContent #loader {
-
-}
-
-.box1 {
-  height: 100px;
-  width: 100px;
-}
+} 
 
 #loader {
   display: flex;

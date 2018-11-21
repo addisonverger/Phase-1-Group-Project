@@ -31,10 +31,11 @@ document.addEventListener('DOMContentLoaded', init)
 
 // function activateScrollMagic () {
     //Init ScrollMagic Controller
+// Init ScrollMagic Controller
     var controller = new ScrollMagic.Controller();
-    // Define ScrollMagic Scene
+// Define ScrollMagic Scene
     var containerScene = new ScrollMagic.Scene({
-        triggerElement: '.dynamicContent #loader',
+        triggerElement: '.container #loader',
         triggerHook: "onEnter"
     })
     .addIndicators()
@@ -45,29 +46,31 @@ document.addEventListener('DOMContentLoaded', init)
             if (console){
                 console.log("loading new items");
             }
-            setTimeout(addResults, 1000, 2);
+            setTimeout(addResults, 1000, 9);
         }
     })
-    // };
 
+// Function to add in new search results
 function addResults (amount) {
+// TO DO: Need to update this for loop so that it adds a result from the search, not hard coded div
     for (i=1; i<=amount; i++) {
-        // var randomColor = '#'+('00000'+(Math.random()*0xFFFFFF<<0).toString(16)).slice(-6);
-        $("<div>Test</div>")
+        $("<div>This is where a new result will go</div>")
             .addClass("tile is-dark notification is-child box")
             .css({
-                "height": "+=100",
-                "width": "+=100",
-                "background-color": "hsl(0, 0%, 96%)",
+                "width": "100%",
+                "background-color": "#4a4a4a",
+                "font-size": "1rem",
+                "font-weight": "400",
+                "line-height": "1.5",
+                "font-family": "BlinkMacSystemFont,-apple-system,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,Helvetica,Arial,sans-serif",
             })
-            .appendTo(".dynamicContent #content");
+            .appendTo(".container #results-container");
     }
     // "loading" done -> revert to normal state
     containerScene.update(); // make sure the scene gets the new start position
     $("#loader").removeClass("active");
     }
 
-addResults(3)
 
 // <div class="tile is-dark notification is-child box">
 //         <h2 class="title is-4">Ariana Grande</h2>
@@ -105,3 +108,5 @@ addResults(3)
 //       </div>
 //     </div>
 //   </div>
+// Set the initial number of results to appear on the page
+addResults(5)
