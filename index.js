@@ -19,7 +19,7 @@ function getRelatedArtistEvents () {
 }
 
 
-
+///TasteDive API call
 
 
 var apiCall = 'https://tastedive.com/api/similar?q=pearl%20jam&type=music&info=1&k=323666-showGo-XUMS94RP';
@@ -54,6 +54,8 @@ fetch(req)
 function init () {
     document.getElementsByClassName('button')[0].addEventListener('click', getRelatedArtistEvents)
 }
+
+// end TasteDive
 
 document.addEventListener('DOMContentLoaded', init)
 
