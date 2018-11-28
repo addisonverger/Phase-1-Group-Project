@@ -8,10 +8,6 @@ body {
   padding-bottom: 50px;
 }
 
-#site-title h1, #site-title p {
-
-}
-
 #site-title {
   background-image: url("concert-crowd.png");
   height: 400px;
