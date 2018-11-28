@@ -1,6 +1,7 @@
 body {
   padding-top: 100px;
-  background-color: hsl(0, 0%, 96%);
+  background-color: hsl(0, 0%, 96%); 
+  height: 100%;
 }
 
 #site-header {
@@ -22,4 +23,9 @@ body {
   justify-content: flex-end;
   align-items: center;
   padding-bottom: 20px;
+} 
+
+#loader {
+  display: flex;
+  margin: 0 50%;
 }
