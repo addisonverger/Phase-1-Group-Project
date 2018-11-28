@@ -1,0 +1,13 @@
+{
+    "name": "showgo-travis-ci-build",
+    "description": "Simple Travis-CI check StandardJS formatting",
+    "author": "Becca Long",
+    "version": "0.0.1",
+    "devDependencies": {
+        "onchange": "5.1.0",
+        "standard": "8.12.0"
+    },
+    "scripts": {
+        "test": "standard *.js"
+    }
+}
