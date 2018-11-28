@@ -1,3 +1,4 @@
+
 function getRelatedArtistEvents () {
     var URL = "http://rest.bandsintown.com/artists/rittz/events?app_id=c283929e0751cf243b17ca899c564814"
     $.ajax({
@@ -43,7 +44,7 @@ fetch(req)
       }else{
           throw new Error('Fetch Error');
       }
-      
+
     })
     .then( (jsonData)=>{
         console.log(jsonData);
@@ -99,3 +100,34 @@ function addResults (amount) {
 
 // Set the initial number of results to appear on the page
 addResults(5)
+
+///Accordion Toggle///
+
+var header = document.getElementsByClassName('tile-header')
+
+for (i = 0; i < header.length; i++) {
+  header[i].addEventListener('click', function () {
+    var content = this.nextElementSibling;
+
+    if (content.style.maxHeight !== '0px') {
+      content.style.maxHeight = '0px';
+      this.style.marginBottom = '0';
+      this.parentNode.removeAttribute('style');
+    } else {
+      hideAll();
+      content.style.maxHeight = content.scrollHeight + 'px';
+      this.style.marginBottom = '1.5rem';
+      this.parentNode.style.backgroundColor = 'hsl(0, 0%, 29%)';
+    }
+  });
+}
+
+function hideAll () {
+  for (i = 0; i < header.length; i++) {
+    var content = header[i].nextElementSibling;
+
+    content.style.maxHeight = '0';
+    header[i].style.marginBottom = '0';
+    header[i].parentNode.removeAttribute('style');
+  }
+}
