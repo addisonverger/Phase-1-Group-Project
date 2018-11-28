@@ -1,6 +1,6 @@
 body {
   padding-top: 100px;
-  background-color: hsl(0, 0%, 96%); 
+  background-color: hsl(0, 0%, 96%);
   height: 100%;
 }
 
@@ -23,7 +23,27 @@ body {
   justify-content: flex-end;
   align-items: center;
   padding-bottom: 20px;
-} 
+}
+
+.title.tile-header:not(:last-child) {
+    cursor: pointer;
+    margin-bottom: 0;
+}
+
+.band-listing:hover {
+  background-color: hsl(0, 0%, 29%);
+}
+
+.tile-body {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+}
+
+.is-child.show {
+    display: block;
+    background-color: hsl(0, 0%, 29%);
+}
 
 #loader {
   display: flex;
