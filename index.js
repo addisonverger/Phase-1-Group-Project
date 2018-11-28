@@ -22,9 +22,12 @@ function getRelatedArtistEvents () {
 ///TasteDive API call
 
 
-var apiCall = 'https://tastedive.com/api/similar?q=pearl%20jam&type=music&info=1&k=323666-showGo-XUMS94RP';
 
-
+var tastedive = 'https://tastedive.com/api/similar?q=';
+var artistQuery = 'david bowie';
+var infoType = '&type=music&info=1';
+var apiKey = '&k=323666-showGo-XUMS94RP';
+var apiCall = tastedive + artistQuery + infoType + apiKey;
 
 let h = new Headers();
 h.append('Accept', 'application/json');
@@ -51,11 +54,14 @@ fetch(req)
     .catch( (err)=>{
         console.log('ERROR:', err.message);
     });
+
+// end TasteDive
+
 function init () {
     document.getElementsByClassName('button')[0].addEventListener('click', getRelatedArtistEvents)
 }
 
-// end TasteDive
+
 
 document.addEventListener('DOMContentLoaded', init)
 
