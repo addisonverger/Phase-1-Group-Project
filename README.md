@@ -2,9 +2,9 @@
 ShowGo is a site that allows you to find out when your favorite artist is coming to town, discover similar artists, and when they are playing  :guitar: :metal:
 
 ## Team Members
-Joseph Madamba\s
-Becca Randall\s
-Luis Renteria\s
+Joseph Madamba\s\s
+Becca Randall\s\s
+Luis Renteria\s\s
 Addison Verger
 
 ## Hosting
