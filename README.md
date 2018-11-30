@@ -1,5 +1,5 @@
 # ShowGo :notes: [![Build Status](https://travis-ci.com/addisonverger/Phase-1-Group-Project.svg?branch=master)](https://travis-ci.com/addisonverger/Phase-1-Group-Project)
-ShowGo is a site that allows you to find out when your favorite artist is coming to town, discover similar artists, and when they are playing  :guitar: :metal:
+ShowGo is a site that allows you to search for your favorite artists, discover similar artists, and find out about local shows. :guitar: :metal:
 
 ## Team Members
 Joseph Madamba  
