@@ -1,4 +1,6 @@
 
+/* global $ ScrollMagic */
+
 function getRelatedArtistEvents () {
   var URL = 'http://rest.bandsintown.com/artists/rittz/events?app_id=c283929e0751cf243b17ca899c564814'
   $.ajax({
