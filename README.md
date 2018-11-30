@@ -24,4 +24,5 @@ Bandsintown provides concert information for the selected artist.
 This repo uses Travis CI to perform automated tests. The Travis CI build checks for JavaScript Standard Style formatting. Build should pass if all JS code is compliant with the StandardJS styleguide. This build uses [onchange](https://github.com/Qard/onchange) to continually check formatting each time code updates are made. 
 
 Click the status badge at the top of this README to see details of the build.
+
 [![JavaScript Style Guide](https://cdn.rawgit.com/standard/standard/master/badge.svg)](https://github.com/standard/standard)
