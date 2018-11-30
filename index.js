@@ -19,7 +19,7 @@ function getRelatedArtistEvents () {
     })
 }
 
-var apiCall = 'https://tastedive.com/api/similar?q=pearl%20jam&type=music&info=1&k=323666-showGo-XUMS94RP'
+
 
 /// TasteDive API call
 
@@ -27,10 +27,10 @@ var tastedive = 'https://tastedive.com/api/similar?q='
 var artistQuery = 'david bowie'
 var infoType = '&type=music&info=1'
 var apiKey = '&k=323666-showGo-XUMS94RP'
-var apiCall = tastedive + artistQuery + infoType + apiKey
+var callTastedive = tastedive + artistQuery + infoType + apiKey
 
 $.ajax({
-  url: apiCall,
+  url: callTastedive,
   method: 'GET',
   dataType: 'jsonp'
 
