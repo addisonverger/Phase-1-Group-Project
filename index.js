@@ -92,7 +92,7 @@ function addResults (amount) {
 // Set the initial number of results to appear on the page
 addResults(5)
 
-/// Accordion Toggle///
+//Accordion Toggle//
 
 var header = document.getElementsByClassName('tile-header')
 
