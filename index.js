@@ -92,7 +92,11 @@ function addResults (amount) {
 // Set the initial number of results to appear on the page
 addResults(5)
 
+<<<<<<< HEAD
 /// Accordion Toggle///
+=======
+//Accordion Toggle//
+>>>>>>> first test for readme
 
 var header = document.getElementsByClassName('tile-header')
 
