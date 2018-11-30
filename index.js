@@ -21,8 +21,6 @@ function getRelatedArtistEvents () {
     })
 }
 
-
-
 /// TasteDive API call
 
 var tastedive = 'https://tastedive.com/api/similar?q='
@@ -92,7 +90,7 @@ function addResults (amount) {
 // Set the initial number of results to appear on the page
 addResults(5)
 
-//Accordion Toggle//
+// Accordion Toggle
 
 var header = document.getElementsByClassName('tile-header')
 
