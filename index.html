@@ -20,94 +20,25 @@
       </div>
       <!-- Search bar -->
       <div class="field is-grouped">
-        <input class="input" type="text" placeholder="Search">
-        <input class="button is-info is-outlined" type="submit" value="Search">
+        <input class="input" id="search-bar" type="text" placeholder="Search">
+        <input class="button is-info is-outlined" id= "search" type="submit" value="Search">
       </div>
     </div>
     <!-- Results -->
     <div id="results-container" class="tile is-ancestor is-vertical is-parent">
-
       <!-- result card -->
       <div class="tile is-dark notification is-child box band-listing">
-          <h2 class="title is-4 tile-header">Daft Punk</h2>
-          <div class="tile-body" style="max-height: 0px">
-            <div class="columns">
-              <div class="column">
-                  <h3 class="title is-5 has-text-info">Artist Bio</h3>
-                  <p>Daft Punk are a French electronic music duo formed in Paris in 1993 by Guy-Manuel de Homem-Christo
-                    and Thomas Bangalter. They achieved popularity in the late 1990s as part of the French house movement,
-                    and had success in the years following, combining elements of house music with funk, techno, disco, rock
-                    and synthpop. They have worn ornate helmets and gloves to assume robot personas in most public appearances
-                    since 2001, and rarely grant interviews or appear on television. The duo were managed from 1996 to 2008 by
-                    Pedro Winter (also known as Busy P), the head of Ed Banger Records. <a href="">(read more)</a></p>
-              </div>
-              <div class="column">
-                  <iframe width="560" height="315" src="https://www.youtube.com/embed/FGBhQbmPwH8" frameborder="0"
-                  allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-              </div>
-            </div>
-            <h3 class="title is-5 has-text-info">Upcoming Shows</h3>
-            <p class="has-text-danger has-text-weight-bold">No upcoming events</p>
-        </div>
-      </div>
-
-      <!-- result card -->
-      <div class="tile is-dark notification is-child box band-listing">
-        <h2 class="title is-4 tile-header">Ariana Grande</h2>
-        <div class="tile-body" style="max-height: 0px">
-          <div class="columns">
-            <div class="column">
-                <h3 class="title is-5 has-text-info">Artist Bio</h3>
-                <p>Ariana Grande-Butera (; born June 26, 1993) is an American singer, songwriter and actress. She began
-                  her career in 2008 in the Broadway musical 13, before playing the role of Cat Valentine in the Nickelodeon
-                  television series Victorious (2010–2013) and in the spinoff Sam & Cat (2013–2014). She has also appeared in
-                  other theatre and television roles and has lent her voice to animated television and films. <a href="">(read more)</a></p>
-            </div>
-            <div class="column">
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/ffxKSjUwKdU" frameborder="0"
-                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            </div>
-          </div>
-          <h3 class="title is-5 has-text-info">Upcoming Shows</h3>
-          <div class="tile is-ancestor">
-            <div class="tile is-parent">
-              <div class="tile is-child box button is-info is-inverted is-outlined">
-                <p>May 19<br />Toyota Center<br />Houston, TX</p>
-              </div>
-            </div>
-            <div class="tile is-parent">
-              <div class="tile is-child box button is-info is-inverted is-outlined">
-                <p>May 17<br />AT&T Center<br />San Antonio, TX</p>
-              </div>
-            </div>
-            <div class="tile is-parent">
-              <div class="tile is-child box button is-info is-inverted is-outlined">
-                <p>May 21<br />American Airlines Center<br />Dallas, TX</p>
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
     </div>
-    <div id="test-container">TestingBandsintownAPI</div>
-
 <!-- Loader for infinite scroll -->
     <div id="loader">
-        <i class="fas fa-spinner fa-pulse" style="margin-right: 5px"></i>
-        LOADING...
     </div>
-
   </div>
-
-
-
 <!-- Javascript Scripts -->
-  <!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script> -->
   <script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/1.14.2/TweenMax.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.3/ScrollMagic.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.3/plugins/animation.gsap.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.3/plugins/debug.addIndicators.js"></script>
   <script src="index.js"></script>
-
 </body>
 </html>
