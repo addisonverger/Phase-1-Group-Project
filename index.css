@@ -3,11 +3,9 @@ body {
   background-color: hsl(0, 0%, 96%);
   height: 100%;
 }
-
 #site-header {
   padding-bottom: 50px;
 }
-
 #site-title {
   background-image: url("concert-crowd.png");
   height: 400px;
@@ -20,27 +18,26 @@ body {
   align-items: center;
   padding-bottom: 20px;
 }
-
 .title.tile-header:not(:last-child) {
     cursor: pointer;
     margin-bottom: 0;
 }
-
+.title.tile-header2:not(:last-child) {
+  cursor: pointer;
+  margin-bottom: 0;
+}
 .band-listing:hover {
   background-color: hsl(0, 0%, 29%);
 }
-
 .tile-body {
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.2s ease-out;
 }
-
 .is-child.show {
     display: block;
     background-color: hsl(0, 0%, 29%);
 }
-
 #loader {
   display: flex;
   margin: 0 50%;
