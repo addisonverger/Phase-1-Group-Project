@@ -1,104 +1,39 @@
 // Search-bar click to pass value to API calls and render results and init ScrollMagic and Accordian
-document.getElementById("search").addEventListener('click', function(){
-  callTastedive ()
-    // Init ScrollMagic Controller
-
-    var controller = new ScrollMagic.Controller()
-    // Define ScrollMagic Scene
-    var containerScene = new ScrollMagic.Scene({
-      triggerElement: '.container #loader',
-      triggerHook: 'onEnter'
-    })
-    .addIndicators()
-      .addTo(controller)
-      .on('enter', function (event) {
-        if (!$('#loader').hasClass('active')) {
-          $('#loader').addClass('active')
-          if (console) {
-            console.log('loading new items')
-          }
-          setTimeout(addResults, 1000, 2)
-        }
-      })
-    // Function to add in new search results
-    function addResults (amount) {
-    // TO DO: Need to update this for loop so that it adds a result from the search, not hard coded div
-      
-    
-    for (var i = 0; i <= amount; i++) {
-      // if (style.display==="none") {
-        $('.band-listing:nth-of-type(1)')
-          .css({
-            'display': '',
-          })
-          .addClass('alreadyShown')
-          .appendTo('.container #info-container')
-        // } 
-
-        // $('<div>This is where a new result will go</div>')
-        //   .addClass('tile is-dark notification is-child box')
-          
-        //     'background-color': '#4a4a4a',
-        //     'font-size': '1rem',
-        //     'font-weight': '400',
-        //     'line-height': '1.5',
-        //     'font-family': 'BlinkMacSystemFont,-apple-system,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,Helvetica,Arial,sans-serif'
-        //   })
-          
-       // createResultCard(input)
-      }
-      // "loading" done -> revert to normal state
-      containerScene.update() // make sure the scene gets the new start position
-      $('#loader').removeClass('active')
-    }
-    // Set the initial number of results to appear on the page
-    addResults(1)
-
-    // end ScrollMagic Controller
+document.getElementById('search').addEventListener('click', function () {
+  var resultsContainerEl = document.getElementById('results-container')
+  resultsContainerEl.innerHTML = ""
+  count = 2
+  callTastedive()
 })
-
 /// TasteDive API call
 function callTastedive () {
-var tastedive = 'https://tastedive.com/api/similar?q='
-var artistQuery = document.getElementById("search-bar").value
-var infoType = '&type=music&info=1'
-var apiKey = '&k=323666-showGo-XUMS94RP'
-var makeCall = tastedive + artistQuery + infoType + apiKey
-$.ajax({
-  url: makeCall,
-  method: 'GET',
-  dataType: 'jsonp'
-})
-  .then(function (response) {
-    console.log(response)
-    infoTastedive = response.Similar.Info[0]
-    // $(".info-container").append(createResultCard(infoTastedive))
-    const infoContainerEl = document.getElementById('info-container')
-    console.assert(infoContainerEl, '#info-container element not found! might want to look into that')
-    infoContainerEl.innerHTML = createResultCard(infoTastedive)
-  
-    resultsTastedive = response.Similar.Results
-    // $(".info-container").append(createResultCard(resultsTastedive))
-    const resultsContainerEl = document.getElementById('results-container')
-    console.assert(resultsContainerEl, '#results-container element not found! might want to look into that')
-    resultsContainerEl.innerHTML = renderResultsCards(resultsTastedive)
-    initAccordian()
-  }) 
-  
+  var tastedive = 'https://tastedive.com/api/similar?q='
+  var artistQuery = document.getElementById('search-bar').value
+  var infoType = '&type=music&info=1'
+  var apiKey = '&k=323666-showGo-XUMS94RP'
+  var makeCall = tastedive + artistQuery + infoType + apiKey
+  $.ajax({
+    url: makeCall,
+    method: 'GET',
+    dataType: 'jsonp'
+  })
+    .then(function (response) {
+      infoTastedive = response.Similar.Info[0]
+      const infoContainerEl = document.getElementById('info-container')
+      console.assert(infoContainerEl, '#info-container element not found! might want to look into that')
+      infoContainerEl.innerHTML = createFirstResultCard(infoTastedive)
+      initAccordian()
+    })
   // make BandsinTown API Call
   getRelatedArtistEvents()
 }
-// end TasteDive
-
 // BandsinTown API Call
-
 function getRelatedArtistEvents () {
   var bandsintown = 'http://rest.bandsintown.com/artists/'
-  var artistQuery = document.getElementById("search-bar").value
+  var artistQuery = document.getElementById('search-bar').value
   var infoType = '/events?'
   var apiKey = 'app_id=c283929e0751cf243b17ca899c564814'
   var makeCall = bandsintown + artistQuery + infoType + apiKey
-
   $.ajax({
     url: makeCall,
     method: 'GET',
@@ -108,30 +43,16 @@ function getRelatedArtistEvents () {
     }
   })
     .then(function (response) {
-      // response.forEach(element => {
-      //   bandsintownResults = response[]
-      //   document.getElementById('upcoming').innerHTML = createUpcomingShowInfo(bandsintownResults)
-      // })
-      for (i=0; i<=3; i++) {
+      for (i = 0; i <= 3; i++) {
         bandsintownResults = response[i]
         document.getElementById('upcoming').innerHTML = createUpcomingShowInfo(bandsintownResults)
       }
     })
 }
-
-// end BandsinTown
-
-// Render results
-
-function renderResultsCards(tastediveAPIArray) {
-  console.log(tastediveAPIArray)
-  return tastediveAPIArray.map(createResultCard).join('')
-}
-
-function createResultCard(input) {
-  
+// Render first card
+function createFirstResultCard (input) {
   return `
-    <div class="tile is-dark notification is-child box band-listing" style="display: none">
+    <div class="tile is-dark notification is-child box band-listing">
     <h2 class="title is-4 tile-header">${input.Name}</h2>
     <div class="tile-body" style="max-height: 0px">
       <div class="columns">
@@ -150,9 +71,7 @@ function createResultCard(input) {
     </div>
   `
 }
-
-function createUpcomingShowInfo(input) {
-  console.log(input)
+function createUpcomingShowInfo (input) {
   return `
       <div>
       <a href="${input.url}"><div class="tile is-parent">
@@ -162,16 +81,12 @@ function createUpcomingShowInfo(input) {
       </div>
   `
 }
-
-//end Render results
-
-    /// Accordion Toggle
-function initAccordian() {
+/// Accordion Toggle
+function initAccordian () {
   var header = document.getElementsByClassName('tile-header')
   for (var i = 0; i < header.length; i++) {
     header[i].addEventListener('click', function () {
       var content = this.nextElementSibling
-
       if (content.style.maxHeight !== '0px') {
         content.style.maxHeight = '0px'
         this.style.marginBottom = '0'
@@ -184,14 +99,75 @@ function initAccordian() {
       }
     })
   }
-
   function hideAll () {
     for (i = 0; i < header.length; i++) {
       var content = header[i].nextElementSibling
-
       content.style.maxHeight = '0'
       header[i].style.marginBottom = '0'
       header[i].parentNode.removeAttribute('style')
     }
   }
+}
+// Init ScrollMagic Controller
+var count = 0
+var controller = new ScrollMagic.Controller()
+// Define ScrollMagic Scene
+var containerScene = new ScrollMagic.Scene({
+  triggerElement: '.container #loader',
+  triggerHook: 'onEnter'
+})
+.addIndicators()
+  .addTo(controller)
+  .on('enter', function (event) {
+    if ((!$('#loader').hasClass('active')) && count < 3) {
+      $('#loader').addClass('active')
+      setTimeout(addResults, 1000, 2)
+    }
+  })
+// Function to add in new search results
+function addResults (amount) {
+  var tastedive = 'https://tastedive.com/api/similar?q='
+  var artistQuery = document.getElementById('search-bar').value
+  var infoType = '&type=music&info=1'
+  var apiKey = '&k=323666-showGo-XUMS94RP'
+  var makeCall = tastedive + artistQuery + infoType + apiKey
+  $.ajax({
+    url: makeCall,
+    method: 'GET',
+    dataType: 'jsonp'
+  })
+    .then(function (response) {
+      tastediveAPIArray = response.Similar.Results
+      var resultsContainerEl = document.getElementById('results-container')
+      resultsContainerEl.innerHTML = renderNextResultsCards(tastediveAPIArray)
+      initAccordian()
+    })
+  $('#loader').removeClass('active')
+  count += 1
+}
+// Set the initial number of results to appear on the page
+addResults(1)
+
+function renderNextResultsCards (tastediveAPIArray) {
+  // console.log(tastediveAPIArray)
+  return tastediveAPIArray.map(createResultCard).join('')
+}
+function createResultCard (input) {
+  return `
+    <div class="tile is-dark notification is-child box band-listing">
+    <h2 class="title is-4 tile-header">${input.Name}</h2>
+    <div class="tile-body" style="max-height: 0px">
+      <div class="columns">
+        <div class="column">
+            <h3 class="title is-5 has-text-info">Artist Bio</h3>
+            <p>${input.wTeaser}</p>
+        </div>
+        <div class="column">
+            <iframe width="560" height="315" src="${input.yUrl}" frameborder="0"
+            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div>
+    </div>
+  `
 }
