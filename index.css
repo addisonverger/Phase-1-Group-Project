@@ -45,3 +45,15 @@ body {
   display: flex;
   margin: 0 50%;
 }
+
+.field {
+  z-index: 1;
+  background-color: hsl(0, 0%, 96%);
+  width: 100%
+}
+
+#pinned-div {
+  width: 100%;
+  display: flex;
+  
+}

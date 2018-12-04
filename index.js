@@ -142,7 +142,7 @@ function initAccordian () {
   }
 }
 
-// Pinned Searchbar with ScrollMagic
+// Init ScrollMagic
 function initScrollMagic () {
   var controller = new ScrollMagic.Controller()
   new ScrollMagic.Scene({
@@ -152,60 +152,5 @@ function initScrollMagic () {
     reverse: true
   })
     .setPin('#pin')
-    // .addIndicators({ name: '1 (duration: 0)' })
     .addTo(controller)
 }
-
-// // Init ScrollMagic Controller
-
-// var controller = new ScrollMagic.Controller()
-// // Define ScrollMagic Scene
-// var containerScene = new ScrollMagic.Scene({
-//   triggerElement: '.container #loader',
-//   triggerHook: 'onEnter'
-// })
-// .addIndicators()
-//   .addTo(controller)
-//   .on('enter', function (event) {
-//     if (!$('#loader').hasClass('active')) {
-//       $('#loader').addClass('active')
-//       if (console) {
-//         console.log('loading new items')
-//       }
-//       setTimeout(addResults, 1000, 2)
-//     }
-//   })
-// // Function to add in new search results
-// function addResults (amount) {
-// // TO DO: Need to update this for loop so that it adds a result from the search, not hard coded div
-
-// for (var i = 0; i <= amount; i++) {
-//   // if (style.display==="none") {
-//     $('.band-listing:nth-of-type(1)')
-//       .css({
-//         'display': '',
-//       })
-//       .addClass('alreadyShown')
-//       .appendTo('.container #info-container')
-//     // }
-
-//     // $('<div>This is where a new result will go</div>')
-//     //   .addClass('tile is-dark notification is-child box')
-
-//     //     'background-color': '#4a4a4a',
-//     //     'font-size': '1rem',
-//     //     'font-weight': '400',
-//     //     'line-height': '1.5',
-//     //     'font-family': 'BlinkMacSystemFont,-apple-system,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,Helvetica,Arial,sans-serif'
-//     //   })
-
-//    // createResultCard(input)
-//   }
-//   // "loading" done -> revert to normal state
-//   containerScene.update() // make sure the scene gets the new start position
-//   $('#loader').removeClass('active')
-// }
-// // Set the initial number of results to appear on the page
-// addResults(1)
-
-// // end ScrollMagic Controller
