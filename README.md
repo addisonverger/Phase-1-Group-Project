@@ -1,5 +1,5 @@
 # ShowGo :notes: [![Build Status](https://travis-ci.com/addisonverger/Phase-1-Group-Project.svg?branch=master)](https://travis-ci.com/addisonverger/Phase-1-Group-Project)
-ShowGo is a site that allows you to search for your favorite artists, discover similar artists, and find out about local shows. :guitar: :metal:
+ShowGo is a site that allows you to search for your favorite artists, see if they are playing in your area. Then, discover similar artists and find out about other local shows. :guitar: :metal:
 
 ## Team Members
 Joseph Madamba  
@@ -8,16 +8,20 @@ Luis Renteria
 Addison Verger
 
 ## Hosting
-Amazon S3
+showGo is available via [Amazon S3](https://aws.amazon.com/s3/) cloud storage
 
 ## JavaScript libraries
-<b>ScrollMagic:</b>The ScrollMagic javascript library is used to create an infinitely scrolling page for the results of a showGo search. It utilizes an ajax load of additional search results once the user hits the bottom of the webpage.
+showGo uses 2 JavaScript libraries:
+* **[ScrollMagic](http://scrollmagic.io/):** The ScrollMagic javascript library is used to create an infinitely scrolling page for the results of a showGo search. It utilizes an ajax load of additional search results once the user hits the bottom of the webpage.
+
+* **[JQuery](https://jquery.com/):** showGo uses the JQuery Javascript library for event handling and Ajax. 
 
 ## CSS Framework
 ShowGo utilizes the [Bulma](https://bulma.io/) CSS framework.
 
 ## APIs
-ShowGo integrates the [TasteDive](https://tastedive.com/read/api) API & [Bandsintown](https://app.swaggerhub.com/apis/Bandsintown/PublicAPI/3.0.0) API. TasteDive provides similar artists, based on a search, as well as basic artist info.
+ShowGo integrates the [TasteDive](https://tastedive.com/read/api) API & [Bandsintown](https://app.swaggerhub.com/apis/Bandsintown/PublicAPI/3.0.0) API. 
+TasteDive provides similar artists, based on a search, as well as basic artist info.
 Bandsintown provides concert information for the selected artist.
 
 ## Automated Tests
