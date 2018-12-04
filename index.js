@@ -1,7 +1,9 @@
+/* global $ ScrollMagic */
+
 // Search-bar click to pass value to API calls and render results and init ScrollMagic and Accordian
 document.getElementById('search').addEventListener('click', function () {
   var resultsContainerEl = document.getElementById('results-container')
-  resultsContainerEl.innerHTML = ""
+  resultsContainerEl.innerHTML = ''
   count = 2
   callTastedive()
 })
@@ -18,7 +20,7 @@ function callTastedive () {
     dataType: 'jsonp'
   })
     .then(function (response) {
-      infoTastedive = response.Similar.Info[0]
+      var infoTastedive = response.Similar.Info[0]
       const infoContainerEl = document.getElementById('info-container')
       console.assert(infoContainerEl, '#info-container element not found! might want to look into that')
       infoContainerEl.innerHTML = createFirstResultCard(infoTastedive)
@@ -28,6 +30,7 @@ function callTastedive () {
   getRelatedArtistEvents()
 }
 // BandsinTown API Call
+
 function getRelatedArtistEvents () {
   var bandsintown = 'http://rest.bandsintown.com/artists/'
   var artistQuery = document.getElementById('search-bar').value
@@ -43,8 +46,8 @@ function getRelatedArtistEvents () {
     }
   })
     .then(function (response) {
-      for (i = 0; i <= 3; i++) {
-        bandsintownResults = response[i]
+      for (var i = 0; i <= 3; i++) {
+        var bandsintownResults = response[i]
         document.getElementById('upcoming').innerHTML = createUpcomingShowInfo(bandsintownResults)
       }
     })
@@ -138,11 +141,11 @@ function reinitAccordian () {
 var count = 0
 var controller = new ScrollMagic.Controller()
 // Define ScrollMagic Scene
-var containerScene = new ScrollMagic.Scene({
+new ScrollMagic.Scene({
   triggerElement: '.container #loader',
   triggerHook: 'onEnter'
 })
-.addIndicators()
+  .addIndicators()
   .addTo(controller)
   .on('enter', function (event) {
     if ((!$('#loader').hasClass('active')) && count < 3) {
@@ -163,7 +166,7 @@ function addResults (amount) {
     dataType: 'jsonp'
   })
     .then(function (response) {
-      tastediveAPIArray = response.Similar.Results
+      var tastediveAPIArray = response.Similar.Results
       var resultsContainerEl = document.getElementById('results-container')
       resultsContainerEl.innerHTML = renderNextResultsCards(tastediveAPIArray)
       reinitAccordian()
