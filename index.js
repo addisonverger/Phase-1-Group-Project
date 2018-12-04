@@ -108,6 +108,32 @@ function initAccordian () {
     }
   }
 }
+function reinitAccordian () {
+  var header = document.getElementsByClassName('tile-header2')
+  for (var i = 0; i < header.length; i++) {
+    header[i].addEventListener('click', function () {
+      var content = this.nextElementSibling
+      if (content.style.maxHeight !== '0px') {
+        content.style.maxHeight = '0px'
+        this.style.marginBottom = '0'
+        this.parentNode.removeAttribute('style')
+      } else {
+        hideAll()
+        content.style.maxHeight = content.scrollHeight + 'px'
+        this.style.marginBottom = '1.5rem'
+        this.parentNode.style.backgroundColor = 'hsl(0, 0%, 29%)'
+      }
+    })
+  }
+  function hideAll () {
+    for (i = 0; i < header.length; i++) {
+      var content = header[i].nextElementSibling
+      content.style.maxHeight = '0'
+      header[i].style.marginBottom = '0'
+      header[i].parentNode.removeAttribute('style')
+    }
+  }
+}
 // Init ScrollMagic Controller
 var count = 0
 var controller = new ScrollMagic.Controller()
@@ -140,7 +166,7 @@ function addResults (amount) {
       tastediveAPIArray = response.Similar.Results
       var resultsContainerEl = document.getElementById('results-container')
       resultsContainerEl.innerHTML = renderNextResultsCards(tastediveAPIArray)
-      initAccordian()
+      reinitAccordian()
     })
   $('#loader').removeClass('active')
   count += 1
@@ -155,7 +181,7 @@ function renderNextResultsCards (tastediveAPIArray) {
 function createResultCard (input) {
   return `
     <div class="tile is-dark notification is-child box band-listing">
-    <h2 class="title is-4 tile-header">${input.Name}</h2>
+    <h2 class="title is-4 tile-header2">${input.Name}</h2>
     <div class="tile-body" style="max-height: 0px">
       <div class="columns">
         <div class="column">
