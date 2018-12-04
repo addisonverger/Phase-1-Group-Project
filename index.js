@@ -1,10 +1,6 @@
 // Search-bar click to pass value to API calls and render results and init ScrollMagic and Accordian
 document.getElementById("search").addEventListener('click', function(){
   callTastedive ()
-  var results = document.getElementById("results-container")
-  results.innerHTML = renderResultsCard
-  renderResultsCard()
-
     // Init ScrollMagic Controller
 
     var controller = new ScrollMagic.Controller()
@@ -28,17 +24,18 @@ document.getElementById("search").addEventListener('click', function(){
     function addResults (amount) {
     // TO DO: Need to update this for loop so that it adds a result from the search, not hard coded div
       for (var i = 1; i <= amount; i++) {
-        $('<div>This is where a new result will go</div>')
-          .addClass('tile is-dark notification is-child box')
-          .css({
-            'width': '100%',
-            'background-color': '#4a4a4a',
-            'font-size': '1rem',
-            'font-weight': '400',
-            'line-height': '1.5',
-            'font-family': 'BlinkMacSystemFont,-apple-system,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,Helvetica,Arial,sans-serif'
-          })
-          .appendTo('.container #results-container')
+        // $('<div>This is where a new result will go</div>')
+        //   .addClass('tile is-dark notification is-child box')
+        //   .css({
+        //     'width': '100%',
+        //     'background-color': '#4a4a4a',
+        //     'font-size': '1rem',
+        //     'font-weight': '400',
+        //     'line-height': '1.5',
+        //     'font-family': 'BlinkMacSystemFont,-apple-system,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,Helvetica,Arial,sans-serif'
+        //   })
+        //   .appendTo('.container #info-container')
+       // createResultCard(input)
       }
       // "loading" done -> revert to normal state
       containerScene.update() // make sure the scene gets the new start position
@@ -48,38 +45,6 @@ document.getElementById("search").addEventListener('click', function(){
     addResults(5)
 
     // end ScrollMagic Controller
-
-    /// Accordion Toggle
-
-var header = document.getElementsByClassName('tile-header')
-
-for (var i = 0; i < header.length; i++) {
-  header[i].addEventListener('click', function () {
-    var content = this.nextElementSibling
-
-    if (content.style.maxHeight !== '0px') {
-      content.style.maxHeight = '0px'
-      this.style.marginBottom = '0'
-      this.parentNode.removeAttribute('style')
-    } else {
-      hideAll()
-      content.style.maxHeight = content.scrollHeight + 'px'
-      this.style.marginBottom = '1.5rem'
-      this.parentNode.style.backgroundColor = 'hsl(0, 0%, 29%)'
-    }
-  })
-}
-
-function hideAll () {
-  for (i = 0; i < header.length; i++) {
-    var content = header[i].nextElementSibling
-
-    content.style.maxHeight = '0'
-    header[i].style.marginBottom = '0'
-    header[i].parentNode.removeAttribute('style')
-  }
-}
-
 })
 
 /// TasteDive API call
@@ -96,7 +61,15 @@ $.ajax({
 })
   .then(function (response) {
     console.log(response)
+    tastediveName = response.Similar.Info[0]
+    // $(".info-container").append(createResultCard(tastediveName))
+    const infoContainerEl = document.getElementById('info-container')
+    console.assert(infoContainerEl, '#info-container element not found! might want to look into that')
+    infoContainerEl.innerHTML = createResultCard(tastediveName)
+    initAccordian()
   })
+  // TODO 
+  
   // make BandsinTown API Call
   getRelatedArtistEvents()
 }
@@ -120,47 +93,81 @@ function getRelatedArtistEvents () {
     }
   })
     .then(function (response) {
-      response.forEach(element => {
-        console.log(response)
-      })
+      // response.forEach(element => {
+      //   bandsintownResults = response[]
+      //   document.getElementById('upcoming').innerHTML = createUpcomingShowInfo(bandsintownResults)
+      // })
+      for (i=0; i<=3; i++) {
+        bandsintownResults = response[i]
+        document.getElementById('upcoming').innerHTML = createUpcomingShowInfo(bandsintownResults)
+      }
     })
-  renderResultsCard()
 }
 
 // end BandsinTown
 
 // Render results
 
-function renderResultsCard() {
-  renderUpcomingResults()
+function createResultCard(input) {
   return `
     <div class="tile is-dark notification is-child box band-listing">
-    <h2 class="title is-4 tile-header">Name</h2>
+    <h2 class="title is-4 tile-header">${input.Name}</h2>
     <div class="tile-body" style="max-height: 0px">
       <div class="columns">
         <div class="column">
             <h3 class="title is-5 has-text-info">Artist Bio</h3>
-            <p>wTeaser</p>
+            <p>${input.wTeaser}</p>
         </div>
         <div class="column">
-            <iframe width="560" height="315" src="yUrl" frameborder="0"
+            <iframe width="560" height="315" src="${input.yUrl}" frameborder="0"
             allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
       </div>
       <h3 class="title is-5 has-text-info">Upcoming Shows</h3>
-      <div class="tile is-ancestor"></div>
+      <div id="upcoming" class="tile is-ancestor"></div>
   `
 }
 
-function renderUpcomingResults() {
+function createUpcomingShowInfo(input) {
+  console.log(input)
   return `
-      <div class="tile is-parent">
+      <a href="${input.url}"><div class="tile is-parent">
         <div class="tile is-child box button is-info is-inverted is-outlined">
-          <p>datetime<br />venuename<br />venuecity</p>
+          <p>${input.datetime}<br/>${input.venue.name}<br/>${input.venue.city}</p>
         </div>
-      </div>
+      </div></a>
   `
 }
 
 //end Render results
 
+    /// Accordion Toggle
+function initAccordian() {
+  var header = document.getElementsByClassName('tile-header')
+  for (var i = 0; i < header.length; i++) {
+    header[i].addEventListener('click', function () {
+      var content = this.nextElementSibling
+
+      if (content.style.maxHeight !== '0px') {
+        content.style.maxHeight = '0px'
+        this.style.marginBottom = '0'
+        this.parentNode.removeAttribute('style')
+      } else {
+        hideAll()
+        content.style.maxHeight = content.scrollHeight + 'px'
+        this.style.marginBottom = '1.5rem'
+        this.parentNode.style.backgroundColor = 'hsl(0, 0%, 29%)'
+      }
+    })
+  }
+
+  function hideAll () {
+    for (i = 0; i < header.length; i++) {
+      var content = header[i].nextElementSibling
+
+      content.style.maxHeight = '0'
+      header[i].style.marginBottom = '0'
+      header[i].parentNode.removeAttribute('style')
+    }
+  }
+}
