@@ -9,7 +9,7 @@ document.getElementById("search").addEventListener('click', function(){
       triggerElement: '.container #loader',
       triggerHook: 'onEnter'
     })
-    // .addIndicators()
+    .addIndicators()
       .addTo(controller)
       .on('enter', function (event) {
         if (!$('#loader').hasClass('active')) {
@@ -17,24 +17,34 @@ document.getElementById("search").addEventListener('click', function(){
           if (console) {
             console.log('loading new items')
           }
-          setTimeout(addResults, 1000, 9)
+          setTimeout(addResults, 1000, 2)
         }
       })
     // Function to add in new search results
     function addResults (amount) {
     // TO DO: Need to update this for loop so that it adds a result from the search, not hard coded div
-      for (var i = 1; i <= amount; i++) {
+      
+    
+    for (var i = 0; i <= amount; i++) {
+      // if (style.display==="none") {
+        $('.band-listing:nth-of-type(1)')
+          .css({
+            'display': '',
+          })
+          .addClass('alreadyShown')
+          .appendTo('.container #info-container')
+        // } 
+
         // $('<div>This is where a new result will go</div>')
         //   .addClass('tile is-dark notification is-child box')
-        //   .css({
-        //     'width': '100%',
+          
         //     'background-color': '#4a4a4a',
         //     'font-size': '1rem',
         //     'font-weight': '400',
         //     'line-height': '1.5',
         //     'font-family': 'BlinkMacSystemFont,-apple-system,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,Helvetica,Arial,sans-serif'
         //   })
-        //   .appendTo('.container #info-container')
+          
        // createResultCard(input)
       }
       // "loading" done -> revert to normal state
@@ -42,7 +52,7 @@ document.getElementById("search").addEventListener('click', function(){
       $('#loader').removeClass('active')
     }
     // Set the initial number of results to appear on the page
-    addResults(5)
+    addResults(1)
 
     // end ScrollMagic Controller
 })
@@ -61,14 +71,19 @@ $.ajax({
 })
   .then(function (response) {
     console.log(response)
-    tastediveName = response.Similar.Info[0]
-    // $(".info-container").append(createResultCard(tastediveName))
+    infoTastedive = response.Similar.Info[0]
+    // $(".info-container").append(createResultCard(infoTastedive))
     const infoContainerEl = document.getElementById('info-container')
     console.assert(infoContainerEl, '#info-container element not found! might want to look into that')
-    infoContainerEl.innerHTML = createResultCard(tastediveName)
+    infoContainerEl.innerHTML = createResultCard(infoTastedive)
+  
+    resultsTastedive = response.Similar.Results
+    // $(".info-container").append(createResultCard(resultsTastedive))
+    const resultsContainerEl = document.getElementById('results-container')
+    console.assert(resultsContainerEl, '#results-container element not found! might want to look into that')
+    resultsContainerEl.innerHTML = renderResultsCards(resultsTastedive)
     initAccordian()
-  })
-  // TODO 
+  }) 
   
   // make BandsinTown API Call
   getRelatedArtistEvents()
@@ -108,9 +123,15 @@ function getRelatedArtistEvents () {
 
 // Render results
 
+function renderResultsCards(tastediveAPIArray) {
+  console.log(tastediveAPIArray)
+  return tastediveAPIArray.map(createResultCard).join('')
+}
+
 function createResultCard(input) {
+  
   return `
-    <div class="tile is-dark notification is-child box band-listing">
+    <div class="tile is-dark notification is-child box band-listing" style="display: none">
     <h2 class="title is-4 tile-header">${input.Name}</h2>
     <div class="tile-body" style="max-height: 0px">
       <div class="columns">
@@ -125,17 +146,20 @@ function createResultCard(input) {
       </div>
       <h3 class="title is-5 has-text-info">Upcoming Shows</h3>
       <div id="upcoming" class="tile is-ancestor"></div>
+    </div>
+    </div>
   `
 }
 
 function createUpcomingShowInfo(input) {
   console.log(input)
   return `
+      <div>
       <a href="${input.url}"><div class="tile is-parent">
         <div class="tile is-child box button is-info is-inverted is-outlined">
           <p>${input.datetime}<br/>${input.venue.name}<br/>${input.venue.city}</p>
-        </div>
-      </div></a>
+        </div></a>
+      </div>
   `
 }
 
