@@ -1,14 +1,13 @@
 body {
-  padding-top: 100px;
-  background-color: hsl(0, 0%, 96%);
+  /* padding-top: 100px; */
+  background-color: hsl(225, 44%, 14%);
   height: 100%;
 }
 #site-header {
   padding-bottom: 50px;
 }
 #site-title {
-  background-image: url("concert-crowd.png");
-  height: 400px;
+  padding-top: 25%;
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -18,6 +17,7 @@ body {
   align-items: center;
   padding-bottom: 20px;
 }
+
 .title.tile-header:not(:last-child) {
     cursor: pointer;
     margin-bottom: 0;
@@ -43,7 +43,7 @@ body {
   margin: 0 50%;
 }
 
-@media only screen and (max-width: 425px) {
+/* @media only screen and (max-width: 425px) {
   iframe {
     width: 100%;
     height: 200px;
@@ -53,13 +53,9 @@ body {
 @media only screen and (max-width: 1087px) {
   body {
     padding-top: 0;
-  }
+  } */
 
-  #site-title {
-    background-image: url("concert.gif");
-  }
-}
-
+/* 
 @media only screen and (min-width: 1088px) and (max-width: 1280px) {
   #site-title {
     height: 410px;
@@ -72,4 +68,19 @@ body {
   #site-title {
     height: 470px;
   }
+} */
+
+#myVideo {
+  position: relative;
+  overflow: hidden;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+}
+
+#videoContainer {
+  position: fixed;
+  height: 100%;
+  width: 100%;
 }
